@@ -14,7 +14,7 @@
 #include <iomanip>
 
 #define N 8
-#define BLOCKSIZE 2
+#define BLOCKSIZE 4
 
 cudaError_t multCuda(double *c, double *c1, const double *a, const double *b, float &naive_time, float &tiling_time);
 
@@ -85,7 +85,7 @@ int main()
 
     cudaError_t cudaStatus = multCuda(c, c1, a, b, naive_time, tiling_time);
     if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addWithCuda failed!");
+        fprintf(stderr, "multCuda failed!");
         return 1;
     }
 
@@ -175,20 +175,32 @@ cudaError_t multCuda(double *c, double *c1, const double *a, const double *b, fl
 	cudaEventRecord(stop);
 	cudaEventSynchronize(stop);
 
+	cudaStatus = cudaThreadSynchronize();
+    if (cudaStatus != cudaSuccess) {
+        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching naiveKernel!\n", cudaStatus);
+        goto Error;
+    }
+
 	cudaEventRecord(start1);
 	tilingKernel<<<dimGrid, dimBlock>>>(dev_c1, dev_a, dev_b);
 	cudaEventRecord(stop1);
 	cudaEventSynchronize(stop1);
 
+	cudaStatus = cudaThreadSynchronize();
+    if (cudaStatus != cudaSuccess) {
+        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching tilingKernel!\n", cudaStatus);
+        goto Error;
+    }
+
     cudaStatus = cudaGetLastError();
     if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "addKernel launch failed: %s\n", cudaGetErrorString(cudaStatus));
+        fprintf(stderr, "Kernel launch failed: %s\n", cudaGetErrorString(cudaStatus));
         goto Error;
     }
     
     cudaStatus = cudaDeviceSynchronize();
     if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching addKernel!\n", cudaStatus);
+        fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching Kernel!\n", cudaStatus);
         goto Error;
     }
 
