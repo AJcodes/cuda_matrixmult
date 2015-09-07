@@ -1,4 +1,4 @@
-﻿Build started 9/5/2015 10:50:01 PM.
+﻿Build started 9/7/2015 7:23:33 PM.
      1>Project "C:\Users\Adel\Documents\Visual Studio 2010\Projects\cuda_matrixmult\cuda_matrixmult\cuda_matrixmult.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\cuda_matrixmult.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -8,7 +8,7 @@
        Skipping target "AddCudaCompilePropsDeps" because all output files are up-to-date with respect to the input files.
        CudaBuild:
          Compiling CUDA source file kernel.cu...
-         cmd.exe /C "C:\Users\Adel\AppData\Local\Temp\tmpeb0d43e460714fa6ab7e9d007a52fbae.cmd"
+         cmd.exe /C "C:\Users\Adel\AppData\Local\Temp\tmp90c8f5f5cd06460bae904911ee3a358e.cmd"
          "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\Adel\Documents\Visual Studio 2010\Projects\cuda_matrixmult\cuda_matrixmult\kernel.cu"
          
          C:\Users\Adel\Documents\Visual Studio 2010\Projects\cuda_matrixmult\cuda_matrixmult>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\Adel\Documents\Visual Studio 2010\Projects\cuda_matrixmult\cuda_matrixmult\kernel.cu" 
@@ -39,4 +39,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:13.15
+Time Elapsed 00:00:09.13
